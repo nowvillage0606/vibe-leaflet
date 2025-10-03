@@ -1,0 +1,45 @@
+template_front: t1_visual
+template_back:  t2_grid
+format: { size: A5, orientation: portrait, bleed_mm: 3, margin_mm: 6 }
+
+event:
+  name: "コミックマーケット106"
+  date: "2025-08-17"          # 実績値を入れる
+  venue: "東京ビッグサイト"
+  space: "東6ホール ウ-03b"
+  circle: "雪野館"
+
+front:
+  masthead:
+    title: "東方紅魔彩華帖"
+    subtitle: "〜雪月花イラストまとめ本"
+  hero:
+    image: "assets/hero_front.jpg"
+  lead_copy: "美麗とカワイイの共存—紅魔組×アニメ塗りのフルカラーイラスト本"
+  sub_section:
+    title: "東方陶酔楽"
+    subtitle: "東方アレンジ × Cool Trance"
+  goods_digest:
+    - { image: "assets/tote.jpg", label: "トート" }
+    - { image: "assets/acrylic_set.jpg", label: "アクキー" }
+  cta_qr:
+    - { label: "音源試聴はココから", url: "https://youtu.be/..." }
+  event_badge_note: "通販は裏面をCHECK!"
+
+back:
+  menu_header:
+    title: "C106 お品書き"
+    note: "2日目 東6ホール ウ-03b 雪野館"
+  bundle_deals:
+    - { pair: [1,2], price: 1500 }
+    - { pair: [1,4], price: 1000 }
+  items:
+    - { id: 1, name: "東方紅魔彩華帖", desc: "A4フルカラー24P", price: 700, image: "assets/book.jpg" }
+    - { id: 2, name: "東方陶酔楽", desc: "東方紅魔郷BGMアレンジ5曲", price: 1000, image: "assets/cd.jpg" }
+    - { id: 3, name: "トートバッグ", desc: "チル×Mサイズ", price: 1500, image: "assets/tote.jpg" }
+    - { id: 4, name: "アクリルキーホルダー", desc: "60mm 全6種", price: 500, image: "assets/acry_key.jpg" }
+  qr_zone:
+    - { label: "音源試聴", url: "https://youtu.be/..." }
+    - { label: "BOOTH",   url: "https://booth.pm/..." }
+  footer:
+    text: "#C106 #雪野館  X: @NowVillage0606"
