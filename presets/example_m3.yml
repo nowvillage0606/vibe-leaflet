@@ -1,1 +1,55 @@
+template_front: t1_visual
+template_back:  t2_grid
+format:
+  size: A5
+  orientation: portrait
+  bleed_mm: 3
+  margin_mm: 6
 
+brand:
+  primary_color: "#C95A8A"
+  accent_color: "#E23B3B"
+  font_head: "Noto Serif JP"
+  font_body: "Noto Sans JP"
+
+event:
+  name: "M3-2025秋"
+  date: "2025-10-26"
+  venue: "東京流通センター"
+  space: "第一展示場 2F O-02b"
+  circle: "NoViLholic"
+
+front:
+  masthead:
+    title: "NoViLholic"
+    subtitle: "新作フルアルバム 完成！"
+  hero:
+    image: "assets/koishi_hero.jpg"
+    alt: "こいしセット ビジュアル"
+  lead_copy: "例大祭先行頒布 — こいしセット（アクキー＋缶バッジ＋ポスカ＋CD）"
+  strong_callout:
+    - text: "フルアルバム『0UAL→light5』完成"
+      style: { weight: "bold", size: "24pt", color: "#111111", bg_highlight: true }
+  goods_digest:
+    - { image: "assets/kochiset_thumb.jpg", label: "こいしセット ¥1,000 (会場限定)", tag: "例大祭限定" }
+    - { image: "assets/tohyo_cdsample.jpg", label: "東方陶酔楽 ¥1,000", tag: "M3初出" }
+  cta_qr:
+    - { label: "音源試聴（0UAL→light5）", url: "https://youtu.be/XXXX" }
+    - { label: "BOOTH通販（予約）", url: "https://booth.pm/XXXX" }
+  event_badge_note: "通販は裏面をCHECK!"
+
+back:
+  menu_header:
+    title: "お品書き"
+    note: "優先度：①フルアルバム ②こいしセット ③東方陶酔楽"
+  bundle_deals:
+    - { pair: ["0UAL→light5","こいしセット"], price: 1800, label: "セット割" }
+  items:
+    - { id: 1, name: "0UAL→light5", desc: "新作フルアルバム／NoViLholic 5周年記念", price: 2000, image: "assets/0ual_cover.jpg", is_new: true, priority: 1 }
+    - { id: 2, name: "こいしセット", desc: "アクキー+缶バッジ+ポストカード+CD 1曲入り", price: 1000, image: "assets/koishi_set.jpg", is_new: true, priority: 2 }
+    - { id: 3, name: "東方陶酔楽", desc: "東方アレンジCD（M3初出）", price: 1000, image: "assets/tohyo_sample.jpg", is_new: true, priority: 3 }
+  qr_zone:
+    - { label: "0UAL→light5 試聴", url: "https://youtu.be/XXXX" }
+    - { label: "BOOTH 通販", url: "https://booth.pm/XXXX" }
+  footer:
+    text: "発行：NoViLholic | X: @NowVillage0606"
