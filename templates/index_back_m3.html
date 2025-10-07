@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>NoViLholic -- M3 チラシ（裏）</title>
+<title>NoViLholic -- 例大祭 チラシ（裏）</title>
 <style>
   :root{ --page-w:148mm; --page-h:210mm; --safe:5mm; --accent:#c94b7a; }
   html,body{height:100%;margin:0;font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;background:#f6f3f8}
@@ -11,9 +11,7 @@
   h2{margin:0 0 6px 0;font-size:16px;color:var(--accent);}
   .meta{font-size:10px;color:#444;margin-bottom:8px;}
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
-  .item{
-    display:flex;gap:8px;align-items:flex-start;padding:8px;border-radius:6px;background:#fff;border:1px solid rgba(0,0,0,0.04);
-  }
+  .item{display:flex;gap:8px;align-items:flex-start;padding:8px;border-radius:6px;background:#fff;border:1px solid rgba(0,0,0,.04);}
   .item img.cover{width:36mm;height:36mm;object-fit:cover;border-radius:4px;}
   .item .info{font-size:10px;color:#222}
   .item .info .title{font-weight:700;margin-bottom:4px;}
@@ -21,6 +19,7 @@
   .qr-row{display:flex;gap:10px;align-items:center;margin-top:12px;}
   .qr-row img{width:34mm;height:34mm;padding:4px;background:#fff;border-radius:6px;box-shadow:0 6px 14px rgba(0,0,0,.08);}
   .footer{position:absolute;left:var(--safe);right:var(--safe);bottom:6px;font-size:9px;color:#666;text-align:center;}
+  @media print{ body{background:transparent} .page{box-shadow:none} }
 </style>
 </head>
 <body>
@@ -31,7 +30,7 @@
     <div class="grid">
       <!-- 0UAL→light5（本命） -->
       <div class="item">
-        <img class="cover" src="assets/book_cover.jpg" alt="0UAL→light5">
+        <img class="cover" src="../assets/book_cover.jpg" alt="0UAL→light5">
         <div class="info">
           <div class="title">0UAL→light5（フルアルバム）</div>
           <div>NoViLholic 5周年記念フルアルバム。多彩なゲストと新曲を収録。</div>
@@ -41,7 +40,7 @@
 
       <!-- こいしセット -->
       <div class="item">
-        <img class="cover" src="assets/koishi_cdmock.png" alt="こいしセット">
+        <img class="cover" src="../assets/koishi_cdmock.png" alt="こいしセット">
         <div class="info">
           <div class="title">こいしセット（会場限定）</div>
           <div>アクキー / 缶バッジ / ポストカード / CD（1曲） をセットに。数量限定。</div>
@@ -51,17 +50,17 @@
 
       <!-- 東方陶酔楽 -->
       <div class="item">
-        <img class="cover" src="assets/tousuiraku.png" alt="東方陶酔楽">
+        <img class="cover" src="../assets/tousuiraku.png" alt="東方陶酔楽">
         <div class="info">
           <div class="title">東方陶酔楽（M3初出）</div>
-          <div>東方アレンジ × Cool Trance。春例大祭新作。</div>
-          <div style="margin-top:6px;"><span class="price">¥1000</span></div>
+          <div>東方アレンジ × Cool Trance。M3会場で先行配布。</div>
+          <div style="margin-top:6px;"><span class="price">¥200</span></div>
         </div>
       </div>
 
       <!-- 既刊 / グッズ -->
       <div class="item">
-        <img class="cover" src="assets/totebag.png" alt="トートバッグ">
+        <img class="cover" src="../assets/totebag.png" alt="トートバッグ">
         <div class="info">
           <div class="title">トートバッグ</div>
           <div>チルノプリント Mサイズ / 会場価格</div>
@@ -74,17 +73,17 @@
     <div style="margin-top:12px;font-size:11px;color:#333;">試聴・通販はこちら</div>
     <div class="qr-row">
       <div style="text-align:center;">
-        <img src="assets/QR_YouTube.png" alt="YouTube">
+        <img src="../assets/QR_YouTube.png" alt="YouTube">
         <div style="font-size:9px;margin-top:6px;">音源試聴（YouTube）</div>
       </div>
       <div style="text-align:center;">
-        <img src="assets/QR_BOOTH.png" alt="BOOTH">
+        <img src="../assets/QR_BOOTH.png" alt="BOOTH">
         <div style="font-size:9px;margin-top:6px;">BOOTH 通販（予約）</div>
       </div>
     </div>
 
     <div class="footer">
-      発行：NoViLholic ・ X: @NowVillage0606 ・ M3-2025秋　O-02b
+      発行：NoViLholic ・ X: @NowVillage0606 ・ 第十二回博麗神社秋季例大祭 あ-12a
     </div>
   </div>
 </body>
