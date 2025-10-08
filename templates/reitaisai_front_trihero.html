@@ -5,55 +5,68 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>NoViLholic -- 例大祭 チラシ（表/トリプルHero）</title>
 <style>
-  :root{ --w:148mm; --h:210mm; --safe:6mm; --accent:#c94b7a; --ink:#111; }
+  :root{
+    --w:148mm; --h:210mm;
+    --safe:6mm;            /* 外周の安全余白のみ */
+    --qrh:32mm;            /* 下部QRバーの高さ */
+    --accent:#c94b7a; --ink:#111;
+  }
   html,body{height:100%;margin:0;background:#eee;font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;}
   .page{ width:var(--w); height:var(--h); margin:12px auto; background:#fff; box-shadow:0 6px 20px rgba(0,0,0,.2); position:relative; overflow:hidden; }
 
-  /* grid: main(2fr) + side(1fr) stacked */
+  /* triエリアはQRバーぶんだけ下を空ける（重なり防止） */
   .tri{
-    position:absolute; inset:var(--safe);
-    display:grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap:6mm;
-    grid-template-areas:
-      "main side1"
-      "main side2";
+    position:absolute; top:var(--safe); left:var(--safe); right:var(--safe);
+    bottom:calc(var(--safe) + var(--qrh) + 2mm);
+    display:grid; grid-template-columns:2fr 1fr; grid-template-rows:1fr 1fr;
+    grid-template-areas:"main side1" "main side2";
+    gap:0;               /* ← マージン/隙間なしで敷き詰め */
+    border-radius:0; overflow:hidden;
   }
-  .hero{ position:relative; border-radius:6px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,.12); background:#000; }
-  .hero::before{ content:""; position:absolute; inset:0; background:linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.20)); }
+  .hero{ position:relative; overflow:hidden; background:#000; }
   .hero img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .main{ grid-area: main; }
-  .side1{ grid-area: side1; }
-  .side2{ grid-area: side2; }
+  .hero::before{ content:""; position:absolute; inset:0;
+    background:linear-gradient(rgba(0,0,0,.10), rgba(0,0,0,.24)); }
+  .main{ grid-area:main; }
+  .side1{ grid-area:side1; }
+  .side2{ grid-area:side2; }
 
+  /* ラベル：半透明の箱にして"置いただけ感"を解消 */
   .badge{
     position:absolute; left:8px; top:8px;
     background:#fff; color:var(--ink); font-weight:800; font-size:11px;
     padding:6px 8px; border-radius:999px; box-shadow:0 4px 12px rgba(0,0,0,.12);
   }
   .label{
-    position:absolute; left:10px; bottom:10px; right:10px; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.5);
+    position:absolute; left:10px; right:10px; bottom:10px;
+    color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.55);
+    background:rgba(0,0,0,.42); padding:8px 10px; border-radius:6px;
   }
   .label .title{ font-size:18px; font-weight:900; margin:0; line-height:1.05; }
-  .label .sub{ font-size:11px; opacity:.95; margin-top:4px; }
+  .label .sub{ font-size:11px; opacity:.98; margin:4px 0 0; }
 
-  /* top-right event chip */
+  /* イベント/サークル情報：サイズUP＋強調 */
   .event{
-    position:absolute; right:var(--safe); top:var(--safe);
-    background:#ffffffd0; color:#000; border:1px solid rgba(0,0,0,.05);
-    font-size:10px; padding:6px 10px; border-radius:999px; box-shadow:0 6px 16px rgba(0,0,0,.08);
+    position:absolute; left:var(--safe); top:var(--safe);
+    background:#ffffffe6; color:#000; border:1px solid rgba(0,0,0,.06);
+    font-size:11px; padding:6px 10px; border-radius:999px; box-shadow:0 6px 16px rgba(0,0,0,.08);
   }
+  .event .space{ font-weight:900; font-size:13px; margin-left:6px; }
 
-  /* QR row */
-  .qr{
-    position:absolute; right:var(--safe); bottom:var(--safe);
-    display:flex; gap:6mm; align-items:center;
+  /* QRバー：下部に固定スペース（ヒーローと衝突しない） */
+  .qrbar{
+    position:absolute; left:0; right:0; bottom:0; height:calc(var(--qrh) + var(--safe));
+    display:flex; align-items:flex-end; justify-content:flex-end; padding:0 var(--safe) var(--safe) 0;
+    background:linear-gradient(180deg, transparent 0, rgba(255,255,255,.86) 22%, #fff 60%); /* 印刷での視認性UP */
   }
+  .qr{ display:flex; gap:6mm; }
   .qr .q{ text-align:center; font-size:9px; color:#222; }
   .qr img{ width:28mm; height:28mm; background:#fff; padding:4px; border-radius:6px; box-shadow:0 6px 14px rgba(0,0,0,.1); }
 
-  /* footer */
-  .footer{
-    position:absolute; left:var(--safe); bottom:calc(var(--safe) + 30mm + 4mm);
-    font-size:9px; color:#333; background:#ffffffcc; padding:4px 8px; border-radius:4px;
+  /* 備考（注意書き） */
+  .note{
+    position:absolute; left:var(--safe); bottom:calc(var(--safe) + var(--qrh) + 2mm);
+    font-size:9px; color:#333; background:#ffffffd9; padding:4px 8px; border-radius:4px;
     border:1px solid rgba(0,0,0,.05);
   }
 
@@ -62,53 +75,63 @@
 </head>
 <body>
   <div class="page">
-    <div class="event">第十二回 博麗神社 秋季例大祭 / 2025.10.19 あ-12a NoViLholic</div>
 
+    <!-- 例大祭 & サークル情報（サイズUP） -->
+    <div class="event">
+      第十二回 博麗神社 秋季例大祭 / 2025.10.19
+      <span class="space">な-09b 雪野館</span>
+    </div>
+
+    <!-- トリプルHero：こいし60 / イラスト本20 / 陶酔楽20 -->
     <div class="tri">
-      <!-- Main: こいしセット（約60%） -->
+      <!-- Main: こいしセット -->
       <section class="hero main">
         <img src="../assets/hero_koishi.PNG" alt="こいしセット ビジュアル">
         <div class="badge">新作 / 例大祭限定</div>
         <div class="label">
           <h1 class="title">こいしセット</h1>
-          <div class="sub">アクキー + 缶バッジ + ポストカード + CD（1曲） / セット価格 <strong>¥1,000</strong></div>
+          <p class="sub">アクキー + 缶バッジ + ポストカード + CD（1曲） / セット価格 <strong>¥1,000</strong></p>
         </div>
       </section>
 
-      <!-- Side1: 既刊イラスト本（約20%） -->
+      <!-- Side1: 既刊イラスト本（画像差し替え：チルノ） -->
       <section class="hero side1">
-        <img src="../assets/book_cover.jpg" alt="既刊イラスト本">
-        <div class="badge">既刊</div>
+        <img src="../assets/hero_chiruno.jpg" alt="フルカラーイラスト本">
+        <div class="badge">既刊 / 書籍</div>
         <div class="label">
-          <p class="title" style="font-size:14px;">フルカラーイラスト本</p>
-          <p class="sub">紅魔組中心 / 会場価格</p>
+          <p class="title" style="font-size:14px;">東方紅魔彩華帖</p>
+          <p class="sub">紅魔組中心 フルカラーイラスト本</p>
         </div>
       </section>
 
-      <!-- Side2: 東方陶酔楽（約20%） -->
+      <!-- Side2: 東方陶酔楽（ラベル位置は上に逃がしてQR干渉なし） -->
       <section class="hero side2">
         <img src="../assets/tousuiraku.png" alt="東方陶酔楽">
         <div class="badge">東方アレンジCD</div>
-        <div class="label">
+        <div class="label" style="bottom:auto; top:10px;"> <!-- ← ラベルを上側に -->
           <p class="title" style="font-size:14px;">東方陶酔楽</p>
-          <p class="sub">Cool Trance アレンジ / M3初出継続頒布</p>
+          <p class="sub">Cool Trance アレンジ</p>
         </div>
       </section>
     </div>
 
-    <!-- QR -->
-    <div class="qr">
-      <div class="q">
-        <img src="../assets/QR_YouTube.png" alt="試聴QR">
-        <div>音源試聴</div>
-      </div>
-      <div class="q">
-        <img src="../assets/QR_BOOTH.png" alt="通販QR">
-        <div>BOOTH 通販</div>
+    <!-- 備考（小さく） -->
+    <div class="note">※QRは事前チェック用です。写真はイメージ。実物と一部異なる場合があります。</div>
+
+    <!-- QRバー（下部固定） -->
+    <div class="qrbar">
+      <div class="qr">
+        <div class="q">
+          <img src="../assets/QR_YouTube.png" alt="試聴QR">
+          <div>音源試聴</div>
+        </div>
+        <div class="q">
+          <img src="../assets/QR_BOOTH.png" alt="通販QR">
+          <div>BOOTH 通販</div>
+        </div>
       </div>
     </div>
 
-    <div class="footer">※QRは会場の混雑を避けるための事前チェック用です。実物と写真は一部異なる場合があります。</div>
   </div>
 </body>
 </html>
