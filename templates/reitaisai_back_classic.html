@@ -1,124 +1,118 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>NoViLholic -- 例大祭 お品書き（裏/クラシック寄せ）</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>な-09b 雪野館 お品書き（例大祭 裏）</title>
 <style>
   :root{
     --w:148mm; --h:210mm; --safe:8mm;
-    --accent:#c94b7a; --ink:#222; --red:#d43b3b;
-    /* 後で差し替える背景画像（こいしHero背景） */
-    --bg-url: none; /* 例）url("../assets/bg_koishi.jpg") */
+    --ink:#111; --muted:#555; --accent:#C62828;
   }
   html,body{height:100%;margin:0;background:#eee;font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;}
-  .page{
-    width:var(--w); height:var(--h); margin:12px auto; position:relative; overflow:hidden;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.92)),
-      radial-gradient(120% 100% at 50% 0%, #f0b6d2 0%, #b9a5e6 40%, #8fb7e3 100%),
-      var(--bg-url);
-    background-blend-mode: normal, multiply, normal;
-    box-shadow:0 6px 20px rgba(0,0,0,.18);
-  }
-  .wrap{position:absolute; inset:var(--safe);}
+  .page{width:var(--w);height:var(--h);margin:12px auto;position:relative;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.18);}
+  .bg{position:absolute;inset:0;
+      background: url("../assets/hero_koishi_bg.jpeg") center/cover no-repeat;
+      filter: blur(2px) saturate(105%); transform: scale(1.02);}
+  .veil{position:absolute;inset:0;background:
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.88) 35%, rgba(255,255,255,.90));}
+  .wrap{position:absolute;inset:var(--safe);display:flex;flex-direction:column;height:calc(100% - 2*var(--safe));}
 
-  /* ヘッダー */
-  .head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:6mm;}
-  .head .ttl{font-size:16px; font-weight:900; color:#111;}
-  .head .evt{font-size:10.5px; color:#333; text-align:right; line-height:1.2;}
-  .head .evt .space{display:block; font-weight:900; font-size:12.5px; color:#111; margin-top:2px;}
+  /* header */
+  .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4mm;}
+  .ttl{font-size:16px;font-weight:900;color:var(--ink);}
+  .ghost{font-size:10px;color:#999;} /* 余白調整用のダミー */
 
-  /* セット割の帯 */
-  .band{
-    display:flex; gap:12mm; align-items:center; justify-content:center;
-    font-size:13px; font-weight:900; margin:0 0 5mm 0; color:#111;
-  }
-  .band .hl{color:var(--red);}
+  /* price badge（右上重ね） */
+  .price-badge{position:absolute;right:8px;top:8px;background:#fff;color:var(--accent);
+               font-weight:900;border-radius:999px;border:1px solid rgba(0,0,0,.08);
+               padding:4px 8px;box-shadow:0 6px 16px rgba(0,0,0,.10);font-size:12px;}
 
-  /* 本体レイアウト（前回構成に寄せる） */
-  .grid{display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto auto; gap:8mm;}
-  .card{display:flex; gap:6mm; align-items:flex-start;}
-  .cover{width:44mm; height:44mm; object-fit:cover; border-radius:6px; background:#fff; box-shadow:0 4px 12px rgba(0,0,0,.08);}
-  .meta{font-size:10.5px; color:#111;}
-  .meta .name{font-weight:900; font-size:14px; margin:0 0 2mm 0;}
-  .meta .cap{color:#555; font-size:10px;}
-  .price{color:var(--red); font-weight:900;}
+  /* 上40%ヒーロー */
+  .hero{position:relative;flex:0 0 40%;display:grid;grid-template-columns:1.2fr .8fr;gap:6mm;
+        background:#ffffffb8;border:1px solid rgba(0,0,0,.06);border-radius:10px;padding:6mm;backdrop-filter:blur(2px);}
+  .hero .title{margin:0 0 3mm 0;font-size:18px;font-weight:900;color:var(--ink);}
+  .hero .desc{font-size:11px;color:#222;line-height:1.25;}
+  .thumbs{align-self:end;display:grid;grid-template-columns:1fr 1fr;gap:3mm;}
+  .thumbs img{width:100%;height:26mm;object-fit:cover;border-radius:6px;border:1px solid rgba(0,0,0,.06);background:#fff;}
+  .note-mini{font-size:9px;color:#666;margin-top:2mm;}
 
-  /* 番号バッジ */
-  .num{font-weight:900; font-size:14px; color:#111; position:absolute; transform:translate(-6mm, -3mm);}
+  /* 下段3箱 */
+  .grid{flex:1 1 auto;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr auto;gap:6mm;margin-top:6mm;}
+  .card{position:relative;background:#ffffffcc;border:1px solid rgba(0,0,0,.06);border-radius:10px;padding:6mm;box-shadow:0 6px 14px rgba(0,0,0,.06);backdrop-filter:blur(2px);}
+  .row{display:flex;gap:6mm;align-items:flex-start;}
+  .cover{width:42mm;height:42mm;object-fit:cover;border-radius:8px;border:1px solid rgba(0,0,0,.06);background:#fff;}
+  .name{font-size:14px;font-weight:900;color:var(--ink);margin:0 0 2mm 0;}
+  .cap{font-size:10.5px;color:#333;}
+  .card-wide{grid-column:1 / -1;}
+  .keys{display:grid;grid-template-columns:repeat(6,1fr);gap:3mm;align-items:center;}
+  .keys img{width:100%;height:22mm;object-fit:contain;background:#fff;border-radius:6px;border:1px solid rgba(0,0,0,.06);
+            box-shadow:0 3px 8px rgba(0,0,0,.06);margin:-1mm;} /* ほんの少し詰める（重なり許容） */
 
-  /* アクキーの6種表示（右下） */
-  .keys{display:grid; grid-template-columns:repeat(3, 1fr); gap:5mm;}
-  .keys img{width:24mm; height:24mm; object-fit:contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,.12));}
-
-  /* QRエリア（下段センター） */
-  .qrs{display:flex; gap:14mm; justify-content:center; align-items:center; margin-top:8mm;}
-  .qr{text-align:center; font-size:10px; color:#111;}
-  .qr img{width:30mm; height:30mm; background:#fff; padding:4px; border-radius:6px; box-shadow:0 6px 14px rgba(0,0,0,.10);}
-
-  /* フッター右下 */
-  .foot{position:absolute; right:0; bottom:0; padding:4mm; text-align:right; color:#444; font-size:10px;}
+  /* QR footer */
+  .qrs{display:flex;gap:12mm;justify-content:center;align-items:center;margin-top:4mm;}
+  .qr{text-align:center;font-size:10px;color:#111;}
+  .qr img{width:28mm;height:28mm;background:#fff;padding:4px;border-radius:6px;box-shadow:0 6px 14px rgba(0,0,0,.10);}
+  @media print{ .page{box-shadow:none} .bg{filter:blur(1.5px)} }
 </style>
 </head>
 <body>
-  <div class="page"><div class="wrap">
+  <div class="page">
+    <div class="bg"></div><div class="veil"></div>
+    <div class="wrap">
 
-    <!-- ヘッダー -->
-    <div class="head">
-      <div class="ttl">お品書き</div>
-      <div class="evt">
-        第十二回 博麗神社 秋季例大祭 / 2025.10.19
-        <span class="space">な-09b　雪野館</span>
+      <div class="head">
+        <div class="ttl">な-09b 雪野館 お品書き</div>
+        <div class="ghost"> </div>
       </div>
-    </div>
 
-    <!-- セット割の帯（文言は前回踏襲。変更あればここを編集） -->
-    <div class="band">
-      <span>①＋② セットで <span class="hl">¥1,500</span></span>
-      <span>①＋④ セットで <span class="hl">¥1,000</span></span>
-    </div>
-
-    <!-- 本体グリッド -->
-    <div class="grid">
-      <!-- ① イラスト本 -->
-      <div class="card" style="position:relative;">
-        <span class="num">①</span>
-        <img class="cover" src="../assets/book_cover.jpg" alt="イラスト本">
-        <div class="meta">
-          <p class="name">東方紅魔彩華帖</p>
-          <div class="cap">〜雪月花イラストまとめ本 / A4フルカラー24P</div>
-          <div class="price">¥700</div>
+      <!-- 上40%：こいしセット（価格バッジ右上、サムネ4点＋こいしトート内包） -->
+      <section class="hero">
+        <div>
+          <h2 class="title">こいしセット</h2>
+          <div class="desc">アクキー / 缶バッジ / ポストカード / CD（1曲）<br>会場限定の特別パッケージ</div>
+          <div class="note-mini">※写真はイメージです。数量限定。</div>
+          <div class="price-badge">¥1,000</div>
         </div>
-      </div>
-
-      <!-- ② 東方陶酔楽 -->
-      <div class="card" style="position:relative;">
-        <span class="num">②</span>
-        <img class="cover" src="../assets/tousuiraku.png" alt="東方陶酔楽">
-        <div class="meta">
-          <p class="name">東方陶酔楽</p>
-          <div class="cap">東方アレンジ × Cool Trance / 5曲入り</div>
-          <div class="price">¥1,000</div>
+        <div class="thumbs">
+          <img src="../assets/ackey_koishi.png"  alt="アクキー">
+          <img src="../assets/koishi_badge.png"  alt="缶バッジ">
+          <img src="../assets/koishi_a6mock.PNG" alt="ポストカード">
+          <img src="../assets/koishi_cdmock.png" alt="CD 1曲">
+          <img src="../assets/koishi_totebag.png" alt="こいしトート（単品有り）">
         </div>
-      </div>
+      </section>
 
-      <!-- ③ トートバッグ（既存）。こいし新作に差し替えるなら src を koishi_totebag.png に -->
-      <div class="card" style="position:relative;">
-        <span class="num">③</span>
-        <img class="cover" src="../assets/totebag.png" alt="トートバッグ">
-        <div class="meta">
-          <p class="name">トートバッグ</p>
-          <div class="cap">チルノプリント Mサイズ</div>
-          <div class="price">¥1,500</div>
-        </div>
-      </div>
+      <!-- 下段3箱 -->
+      <div class="grid">
+        <!-- 左：イラスト本（価格バッジ） -->
+        <section class="card">
+          <div class="price-badge">¥700</div>
+          <div class="row">
+            <img class="cover" src="../assets/book_cover.jpg" alt="東方紅魔彩華帖">
+            <div>
+              <p class="name">東方紅魔彩華帖</p>
+              <div class="cap">紅魔組中心 / A4フルカラー 24P</div>
+            </div>
+          </div>
+        </section>
 
-      <!-- ④ アクキー6種 -->
-      <div class="card" style="position:relative; align-items:flex-start;">
-        <span class="num">④</span>
-        <div class="meta" style="width:100%;">
-          <p class="name" style="margin-bottom:3mm;">アクリルキーホルダー</p>
+        <!-- 右：東方陶酔楽（価格バッジ） -->
+        <section class="card">
+          <div class="price-badge">¥1,000</div>
+          <div class="row">
+            <img class="cover" src="../assets/tousuiraku.png" alt="東方陶酔楽">
+            <div>
+              <p class="name">東方陶酔楽</p>
+              <div class="cap">東方アレンジ × Cool Trance / 5曲入り</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 横長：アクキー6種（価格バッジ「各¥500」） -->
+        <section class="card card-wide">
+          <div class="price-badge">各 ¥500</div>
+          <p class="name" style="margin:0 0 3mm 0;">アクリルキーホルダー（60mm / 全6種）</p>
           <div class="keys">
             <img src="../assets/ackey_reimu.png"  alt="霊夢">
             <img src="../assets/ackey_marisa.png" alt="魔理沙">
@@ -127,28 +121,20 @@
             <img src="../assets/ackey_fran.png"   alt="フラン">
             <img src="../assets/ackey_pache.png"  alt="パチュリー">
           </div>
-          <div class="cap" style="margin-top:4mm;">60サイズ 全6種 / <span class="price" style="font-size:11px;">各¥500</span></div>
+        </section>
+      </div>
+
+      <!-- QR -->
+      <div class="qrs">
+        <div class="qr">
+          <img src="../assets/QR_YouTube.png" alt="試聴QR"><div>音源試聴</div>
+        </div>
+        <div class="qr">
+          <img src="../assets/QR_BOOTH.png" alt="通販QR"><div>BOOTH 通販</div>
         </div>
       </div>
-    </div>
 
-    <!-- QR -->
-    <div class="qrs">
-      <div class="qr">
-        <img src="../assets/QR_YouTube.png" alt="試聴QR">
-        <div>音源試聴はこちら</div>
-      </div>
-      <div class="qr">
-        <img src="../assets/QR_BOOTH.png" alt="通販QR">
-        <div>通販はこちら</div>
-      </div>
     </div>
-
-    <!-- フッター -->
-    <div class="foot">
-      X: @NowVillage0606
-    </div>
-
-  </div></div>
+  </div>
 </body>
 </html>
