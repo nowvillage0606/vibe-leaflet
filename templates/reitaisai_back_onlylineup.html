@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>NoViLholic -- 例大祭 チラシ（裏）</title>
+<style>
+  :root{ --w:148mm; --h:210mm; --safe:6mm; --accent:#c94b7a; --ink:#222; }
+  html,body{height:100%;margin:0;background:#eee;font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;}
+  .page{ width:var(--w); height:var(--h); margin:12px auto; background:#fff; box-shadow:0 6px 20px rgba(0,0,0,.18); position:relative; overflow:hidden; padding:var(--safe); }
+
+  /* header */
+  .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:6mm;}
+  .head .title{font-size:16px;font-weight:900;color:var(--accent);}
+  .head .event{font-size:10.5px;color:#444;text-align:right;line-height:1.2;}
+  .head .event .space{display:block;font-weight:900;font-size:12.5px;color:#111;margin-top:2px;}
+
+  /* items */
+  .items{display:grid;grid-template-columns:1fr 1fr;gap:6mm;}
+  .item{display:flex;gap:6mm;align-items:flex-start;border:1px solid rgba(0,0,0,.06);border-radius:8px;padding:6mm;background:#fff;}
+  .item--wide{grid-column:1 / -1;align-items:stretch;}
+  .cover{width:36mm;height:36mm;object-fit:cover;border-radius:6px;flex:0 0 auto;}
+  .info{flex:1 1 auto;color:var(--ink);font-size:10px;}
+  .info .name{font-weight:900;font-size:14px;margin:0 0 3px 0;}
+  .price{color:var(--accent);font-weight:900;margin-top:4px;}
+  .small{font-size:9px;color:#666;margin-top:2px;}
+
+  /* wide item (こいしセット) */
+  .wide{display:grid;grid-template-columns:1.1fr 1fr;gap:6mm;width:100%;}
+  .thumbs{display:grid;grid-template-columns:1fr 1fr;gap:4mm;}
+  .thumbs img{width:100%;height:26mm;object-fit:cover;border-radius:6px;border:1px solid rgba(0,0,0,.06);}
+
+  /* sections */
+  .sec{margin-top:6mm;}
+  .sec h3{font-size:12.5px;color:#111;margin:0 0 4mm 0;border-left:3px solid var(--accent);padding-left:6px;font-weight:900;}
+
+  /* goods grid */
+  .goods{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;}
+  .card{text-align:center;border:1px solid rgba(0,0,0,.06);border-radius:8px;padding:4mm;background:#fff;}
+  .card img{width:100%;height:28mm;object-fit:cover;border-radius:5px;margin-bottom:3mm;}
+  .card .label{font-size:9.5px;color:#111;}
+
+  /* footer: QR */
+  .footer{position:absolute;right:var(--safe);bottom:var(--safe);display:flex;gap:6mm;align-items:center;}
+  .qr{text-align:center;font-size:9px;color:#222;}
+  .qr img{width:28mm;height:28mm;background:#fff;padding:4px;border-radius:6px;box-shadow:0 6px 14px rgba(0,0,0,.08);}
+
+  @media print{ body{background:transparent} .page{box-shadow:none} }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- header -->
+    <div class="head">
+      <div class="title">お品書き（例大祭：東方ラインナップのみ）</div>
+      <div class="event">
+        第十二回 博麗神社 秋季例大祭 / 2025.10.19
+        <span class="space">な-09b　雪野館</span>
+      </div>
+    </div>
+
+    <div class="items">
+      <!-- こいしセット（ワイド） -->
+      <div class="item item--wide">
+        <div class="wide">
+          <div class="info">
+            <p class="name">こいしセット（会場限定）</p>
+            <div>アクキー / 缶バッジ / ポストカード / CD（1曲）</div>
+            <div class="price">セット価格 ¥1,000</div>
+            <div class="small">※数量限定。写真はイメージです。</div>
+          </div>
+          <div class="thumbs">
+            <img src="../assets/ackey_koishi.png"    alt="アクキー">
+            <img src="../assets/koishi_badge.png"    alt="缶バッジ">
+            <img src="../assets/koishi_a6mock.PNG"   alt="ポストカード">
+            <img src="../assets/koishi_cdmock.png"   alt="CD 1曲">
+          </div>
+        </div>
+      </div>
+
+      <!-- イラスト本 -->
+      <div class="item">
+        <img class="cover" src="../assets/book_cover.jpg" alt="イラスト本">
+        <div class="info">
+          <p class="name">東方紅魔彩華帖</p>
+          <div>紅魔組中心 / フルカラーイラスト本</div>
+          <div class="small">会場価格</div>
+        </div>
+      </div>
+
+      <!-- 東方陶酔楽 -->
+      <div class="item">
+        <img class="cover" src="../assets/tousuiraku.png" alt="東方陶酔楽">
+        <div class="info">
+          <p class="name">東方陶酔楽</p>
+          <div>東方アレンジ × Cool Trance</div>
+          <div class="small">継続頒布（M3初出）</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- アクキー -->
+    <div class="sec">
+      <h3>アクリルキーホルダー（各種）</h3>
+      <div class="goods">
+        <div class="card">
+          <img src="../assets/ackey_reimu.png" alt="霊夢">
+          <div class="label">博麗霊夢</div>
+        </div>
+        <div class="card">
+          <img src="../assets/ackey_marisa.png" alt="魔理沙">
+          <div class="label">霧雨魔理沙</div>
+        </div>
+        <div class="card">
+          <img src="../assets/ackey_sakuya.png" alt="咲夜">
+          <div class="label">十六夜咲夜</div>
+        </div>
+        <div class="card">
+          <img src="../assets/ackey_lemy.png" alt="レミィ">
+          <div class="label">レミィ</div>
+        </div>
+        <div class="card">
+          <img src="../assets/ackey_fran.png" alt="フラン">
+          <div class="label">フランドール</div>
+        </div>
+        <div class="card">
+          <img src="../assets/ackey_pache.png" alt="パチュリー">
+          <div class="label">パチュリー</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- トート -->
+    <div class="sec">
+      <h3>トートバッグ</h3>
+      <div class="goods" style="grid-template-columns:repeat(2,1fr);">
+        <div class="card">
+          <img src="../assets/totebag.png" alt="チルノトート">
+          <div class="label">チルノ柄</div>
+        </div>
+        <div class="card">
+          <img src="../assets/koishi_totebag.png" alt="こいしトート">
+          <div class="label">こいし柄（新作）</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QR -->
+    <div class="footer">
+      <div class="qr">
+        <img src="../assets/QR_YouTube.png" alt="試聴QR">
+        <div>音源試聴</div>
+      </div>
+      <div class="qr">
+        <img src="../assets/QR_BOOTH.png" alt="通販QR">
+        <div>BOOTH 通販</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
