@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>な-09b 雪野館 お品書き（例大祭 裏）</title>
 <style>
   :root{
@@ -11,49 +11,57 @@
   }
   html,body{height:100%;margin:0;background:#eee;font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;}
   .page{width:var(--w);height:var(--h);margin:12px auto;position:relative;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.18);}
-  .bg{position:absolute;inset:0;
-      background: url("../assets/hero_koishi_bg.jpeg") center/cover no-repeat;
-      filter: blur(2px) saturate(105%); transform: scale(1.02);}
-  .veil{position:absolute;inset:0;background:
-        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.88) 35%, rgba(255,255,255,.90));}
-  .wrap{position:absolute;inset:var(--safe);display:flex;flex-direction:column;height:calc(100% - 2*var(--safe));}
+  /* 背景：小解像度対策でわずかに拡大＆ブラー */
+  .bg{position:absolute;inset:0;background:url("../assets/hero_koishi_bg.jpeg") center/cover no-repeat;filter:blur(1.8px);transform:scale(1.03);}
+  .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.90),rgba(255,255,255,.88) 35%,rgba(255,255,255,.92));}
+  .wrap{position:absolute;inset:var(--safe);display:flex;flex-direction:column;gap:6mm;}
 
-  /* header */
-  .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4mm;}
-  .ttl{font-size:16px;font-weight:900;color:var(--ink);}
-  .ghost{font-size:10px;color:#999;} /* 余白調整用のダミー */
+  /* 見出し */
+  .head{display:flex;align-items:flex-end;justify-content:space-between;margin-top:0;}
+  .ttl{font-size:16px;font-weight:900;color:var(--ink);text-shadow:0 1px 0 rgba(0,0,0,.06);}
 
-  /* price badge（右上重ね） */
-  .price-badge{position:absolute;right:8px;top:8px;background:#fff;color:var(--accent);
-               font-weight:900;border-radius:999px;border:1px solid rgba(0,0,0,.08);
-               padding:4px 8px;box-shadow:0 6px 16px rgba(0,0,0,.10);font-size:12px;}
+  /* 価格バッジ（右上固定） */
+  .price-badge{
+    position:absolute; right:0; top:0; transform:translate(6px,-6px);
+    background:#fff; color:var(--accent); font-weight:900; font-size:12px;
+    padding:4px 8px; border-radius:999px; border:1px solid rgba(0,0,0,.08);
+    box-shadow:0 6px 16px rgba(0,0,0,.10);
+  }
 
-  /* 上40%ヒーロー */
-  .hero{position:relative;flex:0 0 40%;display:grid;grid-template-columns:1.2fr .8fr;gap:6mm;
-        background:#ffffffb8;border:1px solid rgba(0,0,0,.06);border-radius:10px;padding:6mm;backdrop-filter:blur(2px);}
-  .hero .title{margin:0 0 3mm 0;font-size:18px;font-weight:900;color:var(--ink);}
-  .hero .desc{font-size:11px;color:#222;line-height:1.25;}
-  .thumbs{align-self:end;display:grid;grid-template-columns:1fr 1fr;gap:3mm;}
-  .thumbs img{width:100%;height:26mm;object-fit:cover;border-radius:6px;border:1px solid rgba(0,0,0,.06);background:#fff;}
-  .note-mini{font-size:9px;color:#666;margin-top:2mm;}
+  /* 上40%：こいしセット */
+  .hero{position:relative; flex:0 0 40%; display:flex; flex-direction:column; gap:4mm;}
+  .hero .h-title{margin:0; font-size:18px; font-weight:900; color:var(--ink); text-shadow:0 1px 0 rgba(0,0,0,.06);}
+  .hero .h-desc{font-size:11px; color:#222; line-height:1.25; margin:0;}
+  .hero .thumbs{
+    margin-top:auto; display:grid; grid-template-columns:repeat(5, 1fr); gap:3mm;
+  }
+  .hero .thumbs img{
+    width:100%; height:26mm; object-fit:cover;
+    border-radius:6px; border:1px solid rgba(0,0,0,.06); background:#fff;
+  }
 
-  /* 下段3箱 */
-  .grid{flex:1 1 auto;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr auto;gap:6mm;margin-top:6mm;}
-  .card{position:relative;background:#ffffffcc;border:1px solid rgba(0,0,0,.06);border-radius:10px;padding:6mm;box-shadow:0 6px 14px rgba(0,0,0,.06);backdrop-filter:blur(2px);}
-  .row{display:flex;gap:6mm;align-items:flex-start;}
-  .cover{width:42mm;height:42mm;object-fit:cover;border-radius:8px;border:1px solid rgba(0,0,0,.06);background:#fff;}
-  .name{font-size:14px;font-weight:900;color:var(--ink);margin:0 0 2mm 0;}
-  .cap{font-size:10.5px;color:#333;}
-  .card-wide{grid-column:1 / -1;}
+  /* 中段：2カラム（ボックスなし） */
+  .mid{display:grid;grid-template-columns:1fr 1fr;gap:8mm;}
+  .prod{position:relative; display:grid; grid-template-columns:auto 1fr; gap:6mm; align-items:flex-start;}
+  .cover{width:44mm;height:44mm;object-fit:cover;border-radius:8px;border:1px solid rgba(0,0,0,.06);background:#fff;}
+  .name{font-size:14px;font-weight:900;color:var(--ink);margin:0 0 2mm 0;text-shadow:0 1px 0 rgba(0,0,0,.06);}
+  .cap{font-size:10.5px;color:#333;margin:0;}
+
+  /* 下段：アクキー横長（詰め配置・軽いオーバーラップ許容） */
+  .ackey{position:relative; margin-top:2mm;}
+  .ackey .title{font-size:14px;font-weight:900;margin:0 0 3mm 0;color:var(--ink);text-shadow:0 1px 0 rgba(0,0,0,.06);}
   .keys{display:grid;grid-template-columns:repeat(6,1fr);gap:3mm;align-items:center;}
-  .keys img{width:100%;height:22mm;object-fit:contain;background:#fff;border-radius:6px;border:1px solid rgba(0,0,0,.06);
-            box-shadow:0 3px 8px rgba(0,0,0,.06);margin:-1mm;} /* ほんの少し詰める（重なり許容） */
+  .keys img{
+    width:100%; height:22mm; object-fit:contain; background:#fff; border-radius:6px;
+    border:1px solid rgba(0,0,0,.06); box-shadow:0 3px 8px rgba(0,0,0,.06); margin:-1mm;
+  }
 
-  /* QR footer */
-  .qrs{display:flex;gap:12mm;justify-content:center;align-items:center;margin-top:4mm;}
+  /* QR */
+  .qrs{display:flex;gap:12mm;justify-content:center;align-items:center;margin-top:auto;}
   .qr{text-align:center;font-size:10px;color:#111;}
-  .qr img{width:28mm;height:28mm;background:#fff;padding:4px;border-radius:6px;box-shadow:0 6px 14px rgba(0,0,0,.10);}
-  @media print{ .page{box-shadow:none} .bg{filter:blur(1.5px)} }
+  .qr img{width:28mm;height:28mm;background:#fff;padding:4px;border-radius:6px;box-shadow:0 4px 10px rgba(0,0,0,.08);}
+
+  @media print{ .page{box-shadow:none} .bg{filter:blur(1.2px)} }
 </style>
 </head>
 <body>
@@ -61,17 +69,17 @@
     <div class="bg"></div><div class="veil"></div>
     <div class="wrap">
 
+      <!-- 見出し -->
       <div class="head">
         <div class="ttl">な-09b 雪野館 お品書き</div>
-        <div class="ghost"> </div>
+        <div style="font-size:10px;color:#999;"></div>
       </div>
 
-      <!-- 上40%：こいしセット（価格バッジ右上、サムネ4点＋こいしトート内包） -->
+      <!-- こいしセット（主役） -->
       <section class="hero">
-        <div>
-          <h2 class="title">こいしセット</h2>
-          <div class="desc">アクキー / 缶バッジ / ポストカード / CD（1曲）<br>会場限定の特別パッケージ</div>
-          <div class="note-mini">※写真はイメージです。数量限定。</div>
+        <div style="position:relative; padding-right:56px;">
+          <h2 class="h-title">こいしセット</h2>
+          <p class="h-desc">アクキー / 缶バッジ / ポストカード / CD（1曲） -- 会場限定の特別パッケージ</p>
           <div class="price-badge">¥1,000</div>
         </div>
         <div class="thumbs">
@@ -79,58 +87,58 @@
           <img src="../assets/koishi_badge.png"  alt="缶バッジ">
           <img src="../assets/koishi_a6mock.PNG" alt="ポストカード">
           <img src="../assets/koishi_cdmock.png" alt="CD 1曲">
-          <img src="../assets/koishi_totebag.png" alt="こいしトート（単品有り）">
+          <img src="../assets/koishi_totebag.png" alt="こいしトート（単品あり）">
         </div>
       </section>
 
-      <!-- 下段3箱 -->
-      <div class="grid">
-        <!-- 左：イラスト本（価格バッジ） -->
-        <section class="card">
-          <div class="price-badge">¥700</div>
-          <div class="row">
+      <!-- 中段：イラスト本 / 東方陶酔楽 -->
+      <div class="mid">
+        <div class="prod">
+          <div style="position:relative;">
             <img class="cover" src="../assets/book_cover.jpg" alt="東方紅魔彩華帖">
-            <div>
-              <p class="name">東方紅魔彩華帖</p>
-              <div class="cap">紅魔組中心 / A4フルカラー 24P</div>
-            </div>
+            <div class="price-badge">¥700</div>
           </div>
-        </section>
+          <div>
+            <p class="name">東方紅魔彩華帖</p>
+            <p class="cap">紅魔組中心 / A4フルカラー 24P</p>
+          </div>
+        </div>
 
-        <!-- 右：東方陶酔楽（価格バッジ） -->
-        <section class="card">
-          <div class="price-badge">¥1,000</div>
-          <div class="row">
+        <div class="prod">
+          <div style="position:relative;">
             <img class="cover" src="../assets/tousuiraku.png" alt="東方陶酔楽">
-            <div>
-              <p class="name">東方陶酔楽</p>
-              <div class="cap">東方アレンジ × Cool Trance / 5曲入り</div>
-            </div>
+            <div class="price-badge">¥1,000</div>
           </div>
-        </section>
-
-        <!-- 横長：アクキー6種（価格バッジ「各¥500」） -->
-        <section class="card card-wide">
-          <div class="price-badge">各 ¥500</div>
-          <p class="name" style="margin:0 0 3mm 0;">アクリルキーホルダー（60mm / 全6種）</p>
-          <div class="keys">
-            <img src="../assets/ackey_reimu.png"  alt="霊夢">
-            <img src="../assets/ackey_marisa.png" alt="魔理沙">
-            <img src="../assets/ackey_sakuya.png" alt="咲夜">
-            <img src="../assets/ackey_lemy.png"   alt="レミィ">
-            <img src="../assets/ackey_fran.png"   alt="フラン">
-            <img src="../assets/ackey_pache.png"  alt="パチュリー">
+          <div>
+            <p class="name">東方陶酔楽</p>
+            <p class="cap">東方アレンジ × Cool Trance / 5曲入り</p>
           </div>
-        </section>
+        </div>
       </div>
+
+      <!-- 下段：アクキー（横長） -->
+      <section class="ackey">
+        <div class="price-badge">各 ¥500</div>
+        <p class="title">アクリルキーホルダー（60mm / 全6種）</p>
+        <div class="keys">
+          <img src="../assets/ackey_reimu.png"  alt="霊夢">
+          <img src="../assets/ackey_marisa.png" alt="魔理沙">
+          <img src="../assets/ackey_sakuya.png" alt="咲夜">
+          <img src="../assets/ackey_lemy.png"   alt="レミィ">
+          <img src="../assets/ackey_fran.png"   alt="フラン">
+          <img src="../assets/ackey_pache.png"  alt="パチュリー">
+        </div>
+      </section>
 
       <!-- QR -->
       <div class="qrs">
         <div class="qr">
-          <img src="../assets/QR_YouTube.png" alt="試聴QR"><div>音源試聴</div>
+          <img src="../assets/QR_YouTube.png" alt="試聴QR">
+          <div>音源試聴</div>
         </div>
         <div class="qr">
-          <img src="../assets/QR_BOOTH.png" alt="通販QR"><div>BOOTH 通販</div>
+          <img src="../assets/QR_BOOTH.png" alt="通販QR">
+          <div>BOOTH 通販</div>
         </div>
       </div>
 
