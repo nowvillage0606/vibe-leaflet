@@ -1,0 +1,124 @@
+meta:
+  title: "unconsciousness"
+  character: "古明地こいし"
+  circle: "雪野館"
+  event: "第十二回博麗神社秋季例大祭 / 2025-10-19"
+  size: "A6 (105×148mm)"
+  orientation: "portrait"
+
+front:
+  hero_image: "../assets/hero_koishi.PNG"
+  background: "../assets/hero_koishi_bg.jpeg"
+  badge: "新作"
+  caption:
+    - "アクキー + 缶バッジ + A6カード + CD（1曲）"
+    - "セット価格 ¥1,000"
+  credits:
+    - "Vocal: 夏色花梨"
+    - "Lyrics & Music: 野蒜"
+    - "Illustration: 雪月花"
+    - "Mix & Mastering: 野蒜"
+
+back:
+  layout: "lyrics"
+  typography:
+    font_size_pt: 10.5
+    line_height: 1.35
+    glitch_color: "#999999"   # 伏字行の色（テンプレ側で使ってね）
+  sections:
+    - heading: "1A"
+      lyrics: |
+        拍動
+        誰もいない
+        鏡面　見つめて　とける
+
+        影向　真夜中
+        心象　対話
+        別離　現実
+        「わたしは誰？」
+
+        (elevate)
+
+    - heading: "1B"
+      lyrics: |
+        ふわふわと　泳いでる
+        記憶の海
+        みんな忘れてく
+        変わったのはそっちの方
+        私はずっと
+        本能のまま生きてるから
+
+    - heading: "サビ"
+      lyrics: |
+        無意識 変容 シグモイド
+        螺旋に映したYou & Me
+        飛躍する思考は未制御　いいのっ
+        分子と朝まで踊るから
+
+        空の気分は今日　理由も意図
+        も無く移り気よ 幽玄に
+        吸い込まれぐるぐる　理性は迷路
+        楽しければまあそれでよし！
+
+    - heading: "2A"
+      lyrics: |
+        みんな　わたしを
+        しらんぷり
+        わかったふりして
+        めをそらす
+
+        わたし　ここには
+        いないのに
+        あなたはなにを
+        みていたの？
+
+        どうして？
+
+    - heading: "2B"
+      lyrics: |
+        箱の形　人それぞれね
+        見たくないのに　映ってしまう
+        だから私　瞳を閉じて
+        何も知らない　これが一番♪
+
+        星の形　今日の気分に
+        合わせ繋ぐ　理想のルート
+        ルール 無いわ　全てが自由
+        誰も私　左右できない
+
+        上下できない　操作できない！
+
+    - heading: "落ちサビ"
+      lyrics: |
+        無意識でいいよう　真紅の糸
+        隔てた一縷は You&Me
+        「しやく」（使役）する飾り 無反応　いいのっ
+        一夜の輪舞を交わしましょ♪
+        青い花弁も　理由も意図
+        もなく回るのよ　永遠に
+        私もそう　考えてもムダよ
+        ここでは全て　私だから♪
+
+    - heading: "ラストサビ"
+      # 表示：まず通常行 → 伏字行（glitch）→ 括弧内の通常版（alt）
+      lines:
+        - text: "あなただけのため　新注の衣装"
+        - text: "刻みつけてよねえ　You gaze me"
+        - text: "最後のお願い　九識の隙間に"
+        - text: "私の形　結びつけて"
+        - text: "って感じの言葉も　＊由も意図"   # 以降はノイズ化
+          glitch: true
+        - text: "もなく＊＊るのよ　＊言蜚語"
+          glitch: true
+        - text: "気まぐれ＊＊＊る　＊性は＊＊ろ"
+          glitch: true
+        - text: "＊＊＊ればまあ　それ＊＊＊"
+          glitch: true
+        - text: "（って感じの言葉も　理由も意図"   # 参考表示（小さめ・グレーなど）
+          alt: true
+        - text: "もなく回るのよ　流言蜚語"
+          alt: true
+        - text: "気まぐれぐるぐる　知性は迷路"
+          alt: true
+        - text: "楽しければまあ　それでヨシ）"
+          alt: true
