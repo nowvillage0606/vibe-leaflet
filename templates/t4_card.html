@@ -74,5 +74,36 @@
       {% endfor %}
     </div>
   </div>
+  
+  <script type="module">
+import yaml from 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/+esm';
+
+// ① YAMLをfetch
+const response = await fetch('../presets/card_unconsciousness.yml');
+const text = await response.text();
+
+// ② YAML→JSオブジェクトへ変換
+const data = yaml.load(text);
+
+// ③ 必要な要素に流し込み
+document.title = data.meta.title + ' - Card';
+
+// 例：タイトル挿入
+document.querySelector('#front .caption strong').textContent = data.meta.title;
+
+// 例：クレジット挿入
+const creditsBox = document.querySelector('#front .caption .credits');
+if (creditsBox && data.front.credits) {
+  creditsBox.innerHTML = data.front.credits.join('<br>');
+}
+
+// 例：歌詞部分（pre-wrap）
+const lyricsContainer = document.querySelector('#back .lyrics');
+if (lyricsContainer && data.back.sections) {
+  lyricsContainer.innerHTML = data.back.sections
+    .map(sec => `<div class="heading">${sec.heading}</div><div>${sec.lyrics || ''}</div>`)
+    .join('<br><br>');
+}
+</script>
 </body>
 </html>
