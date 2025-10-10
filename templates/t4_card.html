@@ -3,139 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{{ meta.title }} - Card</title>
-<link rel="preload" href="../styles/print.css" as="style">
-<style>
-  /* A6 固定レイアウト（mm 指定） */
-  :root{
-    --w:105mm; --h:148mm; --bleed:3mm; --safe:6mm;
-    --bg:#0b1220; --ink:#111;
-    font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
-  }
-  html,body{margin:0;padding:0;background:transparent;}
-  .sheet{ width:calc(var(--w)); height:calc(var(--h)); box-sizing:border-box; position:relative; overflow:hidden; color:var(--ink);}
-  .visual{
-    position:absolute; inset:0;
-    background: #000;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .visual img{ width:100%; height:100%; object-fit:cover; display:block; filter: none; }
-
-  /* safe area overlay for editing */
-  .safe{ position:absolute; left:var(--safe); top:var(--safe); right:var(--safe); bottom:var(--safe); pointer-events:none; }
-
-  /* header badge */
-  .badge{ position:absolute; left:calc(var(--safe)); top:calc(var(--safe)); background: #ff6e88; color:#fff; padding:.2rem .5rem; border-radius:999px; font-weight:800; font-size:12px; }
-
-  /* caption box bottom */
-  .caption{
-    position:absolute; left:var(--safe); right:var(--safe); bottom:var(--safe);
-    background: rgba(255,255,255,0.92); padding:8px; border-radius:6px; font-size:10.5px; line-height:1.25; color:#111;
-  }
-
-  /* backside lyric formatting (simple) */
-  .lyrics{
-    padding: calc(var(--safe) + 4px);
-    box-sizing:border-box;
-    font-size:10.5px; line-height:1.35; white-space:pre-wrap; color:#222;
-  }
-  .heading{ font-weight:900; margin-top:0.2rem; margin-bottom:0.25rem; font-size:11px; }
-
-  @media print {
-    @page { size: 105mm 148mm; margin:0; }
-    body{ background:transparent; }
-  }
-</style>
+<title>A6 Card</title>
+<link rel="stylesheet" href="../styles/card.css">
+<link rel="stylesheet" href="../styles/print.css">
 </head>
 <body>
-  <!-- front -->
+
+<!-- FRONT：タイトルのみ -->
 <div class="sheet" id="front">
   <div class="visual" id="visual">
-    <img id="hero" alt="hero">        <!-- ← srcはJSで入れる -->
+    <img id="hero" alt="hero">
     <div class="safe"></div>
-    <div class="badge" id="badge"></div>
-  </div>
-  <div class="caption">
-    <strong id="title"></strong><br>
-    <div id="captionLines"></div>     <!-- ← ここにfront.captionを流し込み -->
-    <div class="credits" id="credits" style="margin-top:6px;font-size:10px;color:#444;"></div>
+
+    <!-- タイトルボックス（位置・書式はYAMLで制御） -->
+    <div class="titleBox" id="titleBox">
+      <div class="titleBg" id="titleBg"></div>
+      <h1 class="titleText" id="titleText"></h1>
+    </div>
   </div>
 </div>
 
-<!-- back -->
+<!-- BACK：歌詞2段＋クレジット -->
 <div class="sheet" id="back" style="page-break-before:always;">
   <div class="lyrics" id="lyrics"></div>
+  <div class="creditsBlock" id="creditsBlock"></div>
 </div>
-  
-<script type="module">
-import yaml from 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/+esm';
 
-// どのYAMLを読むか（?preset=... で切替可）
-const presetPath = new URLSearchParams(location.search).get('preset')
-  || '../presets/card_unconsciousness.yml';
-
-// ① YAML取得→パース
-const res = await fetch(presetPath);
-if(!res.ok){ console.error('YAML fetch failed:', res.status, presetPath); }
-const data = yaml.load(await res.text());
-
-// ② FRONT 反映
-document.title = `${data?.meta?.title ?? 'Card'} - Card`;
-
-const $visual  = document.getElementById('visual');
-const $hero    = document.getElementById('hero');
-const $badge   = document.getElementById('badge');
-const $title   = document.getElementById('title');
-const $cap     = document.getElementById('captionLines');
-const $credits = document.getElementById('credits');
-
-if (data?.front?.hero_image)   $hero.src = data.front.hero_image;
-if (data?.front?.background) {
-  $visual.style.backgroundImage = `url(${data.front.background})`;
-  $visual.style.backgroundSize = 'cover';
-  $visual.style.backgroundPosition = 'center';
-}
-$badge.textContent = data?.front?.badge ?? '';
-if (!$badge.textContent) $badge.style.display = 'none';
-
-$title.textContent = data?.meta?.title ?? '';
-
-$cap.innerHTML = (data?.front?.caption ?? [])
-  .map(line => `${escapeHtml(line)}<br>`).join('');
-
-$credits.innerHTML = (data?.front?.credits ?? [])
-  .map(c => `${escapeHtml(c)}<br>`).join('');
-
-// ③ BACK（歌詞）反映
-const $lyrics = document.getElementById('lyrics');
-const typ = data?.back?.typography ?? {};
-if (typ.font_size_pt) $lyrics.style.fontSize = `${typ.font_size_pt}pt`;
-if (typ.line_height)  $lyrics.style.lineHeight = typ.line_height;
-
-const sections = data?.back?.sections ?? [];
-$lyrics.innerHTML = sections.map(sec => renderSection(sec)).join('\n');
-
-// --- util: セクション描画（lyricsブロック or lines配列の両対応）
-function renderSection(sec){
-  const h = `<div class="heading">${escapeHtml(sec?.heading ?? '')}</div>`;
-  if (sec?.lyrics) {
-    return `${h}<div style="white-space:pre-wrap">${escapeHtml(sec.lyrics)}</div><div style="height:10px"></div>`;
-  }
-  if (Array.isArray(sec?.lines)) {
-    const body = sec.lines.map(line => {
-      const cls = line.glitch ? 'glitch' : (line.alt ? 'alt' : '');
-      return `<div class="${cls}">${escapeHtml(line.text ?? '')}</div>`;
-    }).join('');
-    return `${h}${body}<div style="height:10px"></div>`;
-  }
-  return h;
-}
-
-// --- util: XSS/記号エスケープ（最低限）
-function escapeHtml(s=''){
-  return String(s)
-    .replaceAll('&','&amp;')
-    .replaceAll('<','&lt;')
-    .replaceAll('>','&gt;');
-}
-</script>
+<!-- YAMLローダ -->
+<script type="module" src="../scripts/card.js"></script>
+</body>
+</html>

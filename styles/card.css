@@ -1,0 +1,49 @@
+:root{
+  --w:105mm; --h:148mm; --bleed:0mm; --safe:6mm;
+  --ink:#111;
+  font-family: "Noto Sans JP","Helvetica Neue",Arial,sans-serif;
+}
+/* ベース */
+html,body{margin:0;padding:0;background:transparent;}
+.sheet{width:calc(var(--w)); height:calc(var(--h)); box-sizing:border-box; position:relative; overflow:hidden; color:var(--ink);}
+.visual{position:absolute; inset:0; background:#000; display:flex; align-items:center; justify-content:center;}
+.visual img{width:100%; height:100%; object-fit:cover; display:block;}
+.safe{position:absolute; left:var(--safe); top:var(--safe); right:var(--safe); bottom:var(--safe); pointer-events:none;}
+
+/* タイトル（表） */
+.titleBox{position:absolute; left:var(--safe); right:var(--safe); bottom:var(--safe); max-width:85%;}
+.titleBg{position:absolute; inset:0; border-radius:6px; display:none;}
+.titleText{position:relative; margin:0; line-height:1.05; padding:8px 10px; border-radius:6px;}
+
+/* 配置プリセット */
+.titleBox.align-center{ left:50%; right:auto; transform:translateX(-50%); text-align:center; }
+.titleBox.align-left-top{ top:var(--safe); bottom:auto; }
+.titleBox.align-right-bottom{ left:auto; right:var(--safe); text-align:right; }
+
+/* 歌詞（裏） */
+.lyrics{
+  padding: calc(var(--safe) + 4px);
+  font-size:10.5pt; line-height:1.35; white-space:pre-wrap; color:#222;
+  columns:2; column-gap:6mm; column-fill:auto;
+}
+.heading{ font-weight:900; margin:0 0 4px; font-size:11px; break-inside:avoid; }
+.lyrics > div{ break-inside:avoid; }
+
+/* クレジット（2段の下にまとめる） */
+.creditsBlock{
+  padding: 6px var(--safe) var(--safe);
+  font-size:9.5pt; line-height:1.25; color:#444;
+  border-top:1px solid rgba(0,0,0,.08);
+  margin-top:4mm;
+  column-span:all; /* 対応ブラウザで段抜け */
+}
+
+/* 伏字・オルタ */
+.glitch{ color:#999; letter-spacing:.02em; }
+.alt{ color:#777; font-size:90%; }
+
+/* 印刷 */
+@media print{
+  @page{ size:105mm 148mm; margin:0; }
+  body{ background:transparent; }
+}
