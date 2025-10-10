@@ -8,23 +8,33 @@ meta:
 
 front:
   hero_image: "../assets/hero_koishi.PNG"
-  background: "../assets/hero_koishi_bg.jpeg"
-  badge: "新作"
-  caption:
-    - "アクキー + 缶バッジ + A6カード + CD（1曲）"
-    - "セット価格 ¥1,000"
-  credits:
-    - "Vocal: 夏色花梨"
-    - "Lyrics & Music: 野蒜"
-    - "Illustration: 雪月花"
-    - "Mix & Mastering: 野蒜"
+  title_text: "unconsciousness"
+  title_style:
+    align: "left-bottom"
+    # ▼英字フォント（Sharp系）。Outfit例。別フォントならここ差し替えOK
+    font_url: "https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap"
+    font_family: "'Outfit','Noto Sans JP','Helvetica Neue',Arial,sans-serif"
+    weight: 900
+    tracking_em: 0.02
+    size_clamp: "clamp(20px, 5.2vw, 34px)"
+    fill: "#ffffff"
+    shadow: "0 2px 12px rgba(0,0,0,.55)"
+    bg: "rgba(0,0,0,.42)"   # 不要なら空文字
 
 back:
+  # ▼裏面背景（なければ削除OK）
+  background: "../assets/hero_koishi_bg.jpeg"
+  bg_panel: true            # 背景の上に白の薄い面を敷いて可読性UP
   layout: "lyrics"
   typography:
-    font_size_pt: 10.5
+    font_size_pt: 10.5      # 初期値。足りなければ↓で自動縮小
     line_height: 1.35
-    glitch_color: "#999999"   # 伏字行の色（テンプレ側で使ってね）
+    columns: 2
+    column_gap_mm: 6
+    autoshrink: true        # 収まるまで自動でフォントを小さく
+    min_font_pt: 8.0        # 最小フォント（要望通り8.0までOK）
+    min_line_height: 1.25   # 行高の下限
+    glitch_color: "#999999"
   sections:
     - heading: "1A"
       lyrics: |
@@ -122,3 +132,9 @@ back:
           alt: true
         - text: "楽しければまあ　それでヨシ）"
           alt: true
+          
+  credits:
+    - "Vocal: 夏色花梨"
+    - "Lyrics & Music: 野蒜"
+    - "Illustration: 雪月花"
+    - "Mix & Mastering: 野蒜"  

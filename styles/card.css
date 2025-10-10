@@ -47,3 +47,30 @@ html,body{margin:0;padding:0;background:transparent;}
   @page{ size:105mm 148mm; margin:0; }
   body{ background:transparent; }
 }
+
+/* 裏面に背景を敷く場合 */
+.sheet.bg-cover{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 背景の上に歌詞を読みやすく載せる薄いパネル */
+.lyrics.backdrop{
+  background: rgba(255,255,255,0.88);
+  border-radius: 6px;
+}
+
+/* 伏字・代替行（既にあればOK） */
+.glitch{ color:#999; letter-spacing:.02em; }
+.alt{ color:#777; font-size:90%; }
+
+/* クレジットを段下に固定表示したい時のための余白（JSで自動調整もする） */
+.creditsBlock{
+  padding: 6px var(--safe) var(--safe);
+  font-size:9.5pt; line-height:1.25; color:#444;
+  border-top:1px solid rgba(0,0,0,.08);
+  margin-top:4mm;
+  column-span: all;
+  background: rgba(255,255,255,0.9); /* 背景あり時の視認性UP */
+}
