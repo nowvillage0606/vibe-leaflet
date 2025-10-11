@@ -17,3 +17,7 @@ A6カード出力確認用URL：https://nowvillage0606.github.io/vibe-leaflet/te
 
 または [ここを押下](https://nowvillage0606.github.io/vibe-leaflet/templates/t4_card.html)
 
+M3チラシ出力確認用URL：https://nowvillage0606.github.io/vibe-leaflet/templates/m3_front_trihero.html
+
+または [ここを押下](https://nowvillage0606.github.io/vibe-leaflet/templates/m3_front_trihero.html)
+
