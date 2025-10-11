@@ -10,8 +10,10 @@
 - templates：htmlを格納。メイン。
 
 例大祭チラシ出力確認用URL：https://nowvillage0606.github.io/vibe-leaflet/templates/reitaisai_front_trihero.html
+
 または [ここを押下](https://nowvillage0606.github.io/vibe-leaflet/templates/reitaisai_front_trihero.html)
 
 A6カード出力確認用URL：https://nowvillage0606.github.io/vibe-leaflet/templates/t4_card.html
+
 または [ここを押下](https://nowvillage0606.github.io/vibe-leaflet/templates/t4_card.html)
 
