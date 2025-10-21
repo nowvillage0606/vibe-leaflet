@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>M3-2025秋 O-02b NoViLholic お品書き（裏・Anniversary）</title>
+<style>
+  :root{
+    --w:148mm; --h:210mm; --safe:8mm;
+    --ink:#111; --muted:#555; --sub:#999;
+    --badge:#C62828;              /* 価格バッジ文字色 */
+    --tile:#FAFAFA;               /* タイル面の下地 */
+    --bord:#EAEAEA;               /* セクションの薄い区切り */
+    --blue:#7AB6FF;               /* NoVi L. 枠色 */
+    --pink:#FF9AC8;               /* 野蒜（ボカロP）枠色 */
+    --gold:#F3C84B;               /* 東方アレンジ枠色 */
+  }
+  html,body{height:100%;margin:0;background:#eee;font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;}
+  .page{width:var(--w);height:var(--h);margin:12px auto;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.16);position:relative;overflow:hidden;}
+  .wrap{position:absolute;inset:var(--safe);display:flex;flex-direction:column;gap:5mm;color:var(--ink);}
+
+  /* Header */
+  .head{padding-bottom:3mm;border-bottom:1px solid var(--bord);}
+  .title{font-size:15.5px;font-weight:900;letter-spacing:.2px;}
+  .subtitle{font-size:10px;color:var(--sub);margin-top:2mm;}
+
+  /* 4-feature grid */
+  .features{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6mm;}
+  .feat{position:relative;display:grid;grid-template-columns:auto 1fr;gap:6mm;align-items:flex-start;}
+  .feat .cover{width:42mm;height:42mm;object-fit:cover;border-radius:8px;background:#fff;border:1px solid rgba(0,0,0,.06);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+  .feat .name{margin:0 0 2mm 0;font-size:14px;font-weight:900;}
+  .feat .cap{margin:0;color:#333;font-size:10.5px;line-height:1.25;}
+  .badge{position:absolute;right:0;top:0;transform:translate(8px,-8px);background:#fff;border:1px solid rgba(0,0,0,.08);
+         border-radius:999px;padding:4px 8px;font-size:12px;font-weight:900;color:var(--badge);box-shadow:0 6px 16px rgba(0,0,0,.08);}
+  .ribbon{position:absolute;left:0;top:0;transform:translate(-4px,-10px);background:linear-gradient(90deg,#ff78a8,#ffb36e);
+          color:#fff;font-weight:900;font-size:10px;padding:3px 8px;border-radius:999px;box-shadow:0 4px 10px rgba(0,0,0,.1);}
+
+  /* Koishi set thumbs (横一列) */
+  .thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:3mm;margin-top:3mm}
+  .thumbs img{width:100%;height:20mm;object-fit:cover;border-radius:6px;border:1px solid rgba(0,0,0,.06);background:#fff}
+
+  /* Bundle band */
+  .bundle{display:flex;justify-content:center;gap:6mm;align-items:center;padding:3mm 0;border-top:1px solid var(--bord);border-bottom:1px solid var(--bord);}
+  .bundle .b{font-weight:900;}
+  .bundle .price{color:var(--badge);font-size:14px;font-weight:900;}
+
+  /* Archive grid */
+  .archive{background:var(--tile);border:1px solid var(--bord);border-radius:10px;padding:4mm;}
+  .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:3mm;}
+  .tile{position:relative;background:#fff;border-radius:6px;padding:0;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
+        border:1px solid rgba(0,0,0,.06);box-shadow:0 1px 6px rgba(0,0,0,.04);}
+  .tile img{width:100%;height:100%;object-fit:cover;border-radius:6px;}
+  .tile.role-novil{outline:2px solid var(--blue);}
+  .tile.role-nobiru{outline:2px solid var(--pink);}
+  .tile.role-touhou{outline:2px solid var(--gold);}
+  .tile.now{outline-width:3px}
+  .tile .label{position:absolute;left:4px;bottom:4px;background:rgba(255,255,255,.9);border-radius:4px;padding:1px 4px;font-size:9px;color:#333;border:1px solid rgba(0,0,0,.06);}
+  .tile.arrow{font-size:22px;font-weight:900;color:#111;letter-spacing:.5px;} /* 「→」タイル */
+
+  /* Footer */
+  .footer{display:flex;justify-content:space-between;align-items:center;margin-top:2mm;}
+  .qrs{display:flex;gap:10mm;align-items:center;}
+  .qr{text-align:center;font-size:9.5px;color:#111;}
+  .qr img{width:26mm;height:26mm;background:#fff;padding:4px;border-radius:6px;box-shadow:0 4px 10px rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.06);}
+  .copy{font-size:9.5px;color:#555;}
+</style>
+</head>
+<body>
+<div class="page"><div class="wrap">
+
+  <!-- Header -->
+  <header class="head">
+    <div class="title">M3-2025秋 第一展示場 O-02b ・ NoViLholic お品書き</div>
+    <div class="subtitle">5th Anniversary Collection -- 0UAL→light5 / 感情の雷撃 / 東方陶酔楽 / こいしセット</div>
+  </header>
+
+  <!-- Four features -->
+  <section class="features">
+
+    <!-- 0UAL→light5 -->
+    <article class="feat">
+      <div style="position:relative">
+        <img class="cover" src="../assets/m3/jacket_17_0UAL_lights.png" alt="0UAL→light5">
+        <!-- アルバム価格が固まったら書き換え可。今はNEWで表現 -->
+        <div class="ribbon">NEW</div>
+      </div>
+      <div>
+        <h3 class="name">0UAL→light5（Full Album）</h3>
+        <p class="cap">5年間の軌跡を束ねた13曲。白基調アートワークと連動した周年盤。</p>
+      </div>
+    </article>
+
+    <!-- Koishi set -->
+    <article class="feat">
+      <div style="position:relative">
+        <img class="cover" src="../assets/koishi_cdmock.png" alt="こいしセット">
+        <div class="badge">¥1,000</div>
+      </div>
+      <div>
+        <h3 class="name">こいしセット（M3頒布）</h3>
+        <p class="cap">アクキー / 缶バッジ / A6歌詞カード / 新曲CD（1曲+Inst）</p>
+        <div class="thumbs">
+          <img src="../assets/ackey_koishi.png"  alt="アクキー">
+          <img src="../assets/koishi_badge.png"  alt="缶バッジ">
+          <img src="../assets/koishi_a6mock.PNG" alt="A6カード">
+          <img src="../assets/koishi_cdmock.png" alt="CD">
+          <img src="../assets/koishi_totebag.png" alt="トート（単品）">
+        </div>
+      </div>
+    </article>
+
+    <!-- Tousuiraku -->
+    <article class="feat">
+      <div style="position:relative">
+        <img class="cover" src="../assets/tousuiraku.png" alt="東方陶酔楽">
+        <div class="badge">¥1,000</div>
+      </div>
+      <div>
+        <h3 class="name">東方陶酔楽</h3>
+        <p class="cap">東方アレンジ × Cool Trance / 5曲入り</p>
+      </div>
+    </article>
+
+    <!-- Kanjo no Raigeki (Rock Works) -->
+    <article class="feat">
+      <div style="position:relative">
+        <img class="cover" src="../assets/m3/jacket_14_Kanjo_no_Raigeki.png" alt="感情の雷撃">
+        <div class="badge">¥1,000</div>
+      </div>
+      <div>
+        <h3 class="name">感情の雷撃 <span style="font-size:10px;font-weight:700;color:#555;">/ Rock Works</span></h3>
+        <p class="cap">収録5曲すべてギター録り下ろし。エネルギーを帯びたロックサウンド。</p>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- Bundle band -->
+  <div class="bundle">
+    <div class="b">上記4作品コンプリートで</div>
+    <div class="price">¥5,000</div>
+  </div>
+
+  <!-- Archive gallery (17 works + arrow) -->
+  <section class="archive">
+    <div class="grid">
+
+      <!-- 1st〜5th：NoVi L.（本人歌唱） -->
+      <div class="tile role-novil"><img src="../assets/m3/jacket_01_OpenMyHeart.png" alt="1st"><span class="label">1st</span></div>
+      <div class="tile role-novil"><img src="../assets/m3/jacket_02_VioletMemories.png" alt="2nd"><span class="label">2nd</span></div>
+      <div class="tile role-novil"><img src="../assets/m3/jacket_03_impulse.png" alt="3rd"><span class="label">3rd</span></div>
+      <div class="tile role-novil"><img src="../assets/m3/jacket_04_LittleDream.png" alt="4th"><span class="label">4th</span></div>
+      <div class="tile role-novil"><img src="../assets/m3/jacket_05_andSleep.png" alt="5th"><span class="label">5th</span></div>
+
+      <!-- 6th,7th,9th：野蒜（ボカロP） -->
+      <div class="tile role-nobiru"><img src="../assets/m3/jacket_06_andSleep_Miku.png" alt="6th"><span class="label">6th</span></div>
+      <div class="tile role-nobiru"><img src="../assets/m3/jacket_07_Seisyun_kimi_ni_soyokaze.png" alt="7th"><span class="label">7th</span></div>
+
+      <!-- 8th：NoVi L. ミニアルバム（本人歌唱まとめ） -->
+      <div class="tile role-novil"><img src="../assets/m3/jacket_08_Seisyun_no_Zanshi.png" alt="8th"><span class="label">8th</span></div>
+
+      <!-- 9th：野蒜 -->
+      <div class="tile role-nobiru"><img src="../assets/m3/jacket_09_fromBeginningtoEnd.png" alt="9th"><span class="label">9th</span></div>
+
+      <!-- 10th：NoVi L.（本人歌唱まとめ） -->
+      <div class="tile role-novil"><img src="../assets/m3/jacket_10_MymusicMyWorld.png" alt="10th"><span class="label">10th</span></div>
+
+      <!-- 11〜14：野蒜（ボカロP EP） -->
+      <div class="tile role-nobiru"><img src="../assets/m3/jacket_11_Toumei_recollection.png" alt="11th"><span class="label">11th</span></div>
+      <div class="tile role-nobiru"><img src="../assets/m3/jacket_12_Gainen.png" alt="12th"><span class="label">12th</span></div>
+      <div class="tile role-nobiru"><img src="../assets/m3/jacket_13_Midnight_INTeraction.png" alt="13th"><span class="label">13th</span></div>
+      <div class="tile role-nobiru"><img src="../assets/m3/jacket_14_Kanjo_no_Raigeki.png" alt="14th"><span class="label">14th</span></div>
+
+      <!-- 15〜16：東方アレンジ -->
+      <div class="tile role-touhou"><img src="../assets/m3/jacket_15_Touhou_Tousuiraku.png" alt="15th"><span class="label">15th</span></div>
+      <div class="tile role-touhou"><img src="../assets/m3/jacket_16_unconsciousness.png" alt="16th"><span class="label">16th</span></div>
+
+      <!-- 17th：現行（枠太め） -->
+      <div class="tile role-nobiru now"><img src="../assets/m3/jacket_17_0UAL_lights.png" alt="17th"><span class="label">17th / Now</span></div>
+
+      <!-- 18th：矢印タイル（シンボル） -->
+      <div class="tile arrow">→</div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="qrs">
+      <div class="qr">
+        <img src="../assets/QR_YouTube.png" alt="試聴QR"><div>全曲試聴</div>
+      </div>
+      <div class="qr">
+        <img src="../assets/QR_BOOTH.png" alt="通販QR"><div>通販はこちら</div>
+      </div>
+    </div>
+    <div class="copy">© 2025 NoViLholic / 野蒜　|　X: @NowVillage0606</div>
+  </footer>
+
+</div></div>
+</body>
+</html>
