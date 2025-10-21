@@ -6,63 +6,91 @@
 <title>M3-2025秋 O-02b NoViLholic お品書き（裏・Anniversary）</title>
 <style>
   :root{
-    --w:148mm; --h:210mm; --safe:8mm;
-    --ink:#111; --muted:#555; --sub:#999;
-    --badge:#C62828;              /* 価格バッジ文字色 */
-    --tile:#FAFAFA;               /* タイル面の下地 */
-    --bord:#EAEAEA;               /* セクションの薄い区切り */
-    --blue:#7AB6FF;               /* NoVi L. 枠色 */
-    --pink:#FF9AC8;               /* 野蒜（ボカロP）枠色 */
-    --gold:#F3C84B;               /* 東方アレンジ枠色 */
-  }
-  html,body{height:100%;margin:0;background:#eee;font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;}
-  .page{width:var(--w);height:var(--h);margin:12px auto;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.16);position:relative;overflow:hidden;}
-  .wrap{position:absolute;inset:var(--safe);display:flex;flex-direction:column;gap:5mm;color:var(--ink);}
+  --w:148mm; --h:210mm; --safe:8mm;
+  --ink:#111; --muted:#555; --sub:#999;
+  --badge:#C62828; --tile:#FAFAFA; --bord:#EAEAEA;
+  --blue:#7AB6FF; --pink:#FF9AC8; --gold:#F3C84B;
 
-  /* Header */
-  .head{padding-bottom:3mm;border-bottom:1px solid var(--bord);}
-  .title{font-size:15.5px;font-weight:900;letter-spacing:.2px;}
-  .subtitle{font-size:10px;color:var(--sub);margin-top:2mm;}
+  /* 追加：圧縮系トークン */
+  --cover:34mm;         /* フィーチャーカバー画像の一辺 */
+  --gap-main:4mm;       /* セクション間ガター（従来:5〜6mm） */
+  --gap-grid:4mm;       /* 4グリッドのガター（従来:6mm） */
+  --gap-tiles:2.2mm;    /* アーカイブのタイル間隔（従来:3mm） */
+}
 
-  /* 4-feature grid */
-  .features{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6mm;}
-  .feat{position:relative;display:grid;grid-template-columns:auto 1fr;gap:6mm;align-items:flex-start;}
-  .feat .cover{width:42mm;height:42mm;object-fit:cover;border-radius:8px;background:#fff;border:1px solid rgba(0,0,0,.06);box-shadow:0 2px 8px rgba(0,0,0,.06);}
-  .feat .name{margin:0 0 2mm 0;font-size:14px;font-weight:900;}
-  .feat .cap{margin:0;color:#333;font-size:10.5px;line-height:1.25;}
-  .badge{position:absolute;right:0;top:0;transform:translate(8px,-8px);background:#fff;border:1px solid rgba(0,0,0,.08);
-         border-radius:999px;padding:4px 8px;font-size:12px;font-weight:900;color:var(--badge);box-shadow:0 6px 16px rgba(0,0,0,.08);}
-  .ribbon{position:absolute;left:0;top:0;transform:translate(-4px,-10px);background:linear-gradient(90deg,#ff78a8,#ffb36e);
-          color:#fff;font-weight:900;font-size:10px;padding:3px 8px;border-radius:999px;box-shadow:0 4px 10px rgba(0,0,0,.1);}
+.page{width:var(--w);height:var(--h);margin:12px auto;background:#fff;
+  box-shadow:0 6px 20px rgba(0,0,0,.16);position:relative;overflow:hidden;}
+.wrap{position:absolute;inset:var(--safe);display:flex;flex-direction:column;gap:var(--gap-main);color:var(--ink);}
 
-  /* Koishi set thumbs (横一列) */
-  .thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:3mm;margin-top:3mm}
-  .thumbs img{width:100%;height:20mm;object-fit:cover;border-radius:6px;border:1px solid rgba(0,0,0,.06);background:#fff}
+/* Header */
+.head{padding-bottom:2mm;border-bottom:1px solid var(--bord);}
+.title{font-size:15px;font-weight:900;letter-spacing:.2px;}
+.subtitle{font-size:9.5px;color:var(--sub);margin-top:1.5mm;}
 
-  /* Bundle band */
-  .bundle{display:flex;justify-content:center;gap:6mm;align-items:center;padding:3mm 0;border-top:1px solid var(--bord);border-bottom:1px solid var(--bord);}
-  .bundle .b{font-weight:900;}
-  .bundle .price{color:var(--badge);font-size:14px;font-weight:900;}
+/* 4 features ---- 高さ取りをやめて"自然に詰める" */
+.features{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:auto auto;    /* ← auto に戻す */
+  gap:var(--gap-grid);
+  margin-bottom:0;                 /* 余白を最小化 */
+}
+.feat{
+  position:relative;
+  display:grid; grid-template-columns:var(--cover) 1fr;
+  gap:3.5mm; align-items:center;   /* 中央寄せでテキストが潰れないように */
+}
+.feat .cover{
+  width:var(--cover); height:var(--cover);
+  object-fit:cover; border-radius:8px;background:#fff;
+  border:1px solid rgba(0,0,0,.06); box-shadow:0 1px 6px rgba(0,0,0,.05);
+}
+/* Koishiは切り抜きを避けたいので contain 指定 */
+.feat.koishi .cover{ object-fit:contain; background:#fff; }
 
-  /* Archive grid */
-  .archive{background:var(--tile);border:1px solid var(--bord);border-radius:10px;padding:4mm;}
-  .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:3mm;}
-  .tile{position:relative;background:#fff;border-radius:6px;padding:0;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
-        border:1px solid rgba(0,0,0,.06);box-shadow:0 1px 6px rgba(0,0,0,.04);}
-  .tile img{width:100%;height:100%;object-fit:cover;border-radius:6px;}
-  .tile.role-novil{outline:2px solid var(--blue);}
-  .tile.role-nobiru{outline:2px solid var(--pink);}
-  .tile.role-touhou{outline:2px solid var(--gold);}
-  .tile.now{outline-width:3px}
-  .tile .label{position:absolute;left:4px;bottom:4px;background:rgba(255,255,255,.9);border-radius:4px;padding:1px 4px;font-size:9px;color:#333;border:1px solid rgba(0,0,0,.06);}
-  .tile.arrow{font-size:22px;font-weight:900;color:#111;letter-spacing:.5px;} /* 「→」タイル */
+.feat .name{margin:0 0 1.5mm 0;font-size:12.5px;font-weight:900;line-height:1.15;}
+.feat .cap{
+  margin:0;color:#333;font-size:9.5px;line-height:1.25;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.badge{
+  position:absolute;right:0;top:0;transform:translate(6px,-6px);
+  background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:999px;
+  padding:3px 7px;font-size:11px;font-weight:900;color:var(--badge);
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.ribbon{position:absolute;left:0;top:0;transform:translate(-4px,-9px);
+  background:linear-gradient(90deg,#ff78a8,#ffb36e);color:#fff;font-weight:900;
+  font-size:9.5px;padding:2px 7px;border-radius:999px;box-shadow:0 4px 10px rgba(0,0,0,.1);}
 
-  /* Footer */
-  .footer{display:flex;justify-content:space-between;align-items:center;margin-top:2mm;}
-  .qrs{display:flex;gap:10mm;align-items:center;}
-  .qr{text-align:center;font-size:9.5px;color:#111;}
-  .qr img{width:26mm;height:26mm;background:#fff;padding:4px;border-radius:6px;box-shadow:0 4px 10px rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.06);}
-  .copy{font-size:9.5px;color:#555;}
+/* バンド（上下をさらに圧縮） */
+.bundle{display:flex;justify-content:center;gap:5mm;align-items:center;
+  padding:1.6mm 0;border-top:1px solid var(--bord);border-bottom:1px solid var(--bord);}
+.bundle .b{font-weight:900;font-size:11.5px;}
+.bundle .price{color:var(--badge);font-size:13px;font-weight:900;}
+
+/* Archive ---- タイルを小さく＋ガター縮小で3段を確実に収める */
+.archive{background:var(--tile);border:1px solid var(--bord);border-radius:10px;padding:3.2mm;}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--gap-tiles);}
+.tile{position:relative;background:#fff;border-radius:6px;aspect-ratio:1/1;
+  display:flex;align-items:center;justify-content:center;border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 1px 4px rgba(0,0,0,.03);}
+.tile img{width:100%;height:100%;object-fit:cover;border-radius:6px;}
+.tile.role-novil{outline:2px solid var(--blue);}
+.tile.role-nobiru{outline:2px solid var(--pink);}
+.tile.role-touhou{outline:2px solid var(--gold);}
+.tile.now{outline-width:3px}
+.tile .label{position:absolute;left:3px;bottom:3px;background:rgba(255,255,255,.9);
+  border-radius:4px;padding:1px 3px;font-size:8.5px;color:#333;border:1px solid rgba(0,0,0,.06);}
+.tile.arrow{font-size:20px;font-weight:900;color:#111;letter-spacing:.5px;}
+
+/* QRフッター ---- さらに少しだけコンパクトに */
+.footer{display:flex;justify-content:space-between;align-items:center;margin-top:.5mm;}
+.qrs{display:flex;gap:8mm;align-items:center;}
+.qr{text-align:center;font-size:9px;color:#111;}
+.qr img{width:24mm;height:24mm;background:#fff;padding:3px;border-radius:6px;
+  box-shadow:0 3px 8px rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.06);}
+.copy{font-size:9px;color:#555;}
 </style>
 </head>
 <body>
@@ -91,23 +119,17 @@
     </article>
 
     <!-- Koishi set -->
-    <article class="feat">
-      <div style="position:relative">
-        <img class="cover" src="../assets/koishi_cdmock.png" alt="こいしセット">
-        <div class="badge">¥1,000</div>
-      </div>
-      <div>
-        <h3 class="name">こいしセット（M3頒布）</h3>
-        <p class="cap">アクキー / 缶バッジ / A6歌詞カード / 新曲CD（1曲+Inst）</p>
-        <div class="thumbs">
-          <img src="../assets/ackey_koishi.png"  alt="アクキー">
-          <img src="../assets/koishi_badge.png"  alt="缶バッジ">
-          <img src="../assets/koishi_a6mock.PNG" alt="A6カード">
-          <img src="../assets/koishi_cdmock.png" alt="CD">
-          <img src="../assets/koishi_totebag.png" alt="トート（単品）">
-        </div>
-      </div>
-    </article>
+<!-- ここだけ class="feat" → class="feat koishi" に -->
+<article class="feat koishi">
+  <div style="position:relative">
+    <img class="cover" src="../assets/koishiset.png" alt="こいしセット（メロン用画像）">
+    <div class="badge">¥1,000</div>
+  </div>
+  <div>
+    <h3 class="name">こいしセット（M3頒布）</h3>
+    <p class="cap">アクキー / 缶バッジ / A6歌詞カード / 新曲CD（1曲+Inst）</p>
+  </div>
+</article>
 
     <!-- Tousuiraku -->
     <article class="feat">
